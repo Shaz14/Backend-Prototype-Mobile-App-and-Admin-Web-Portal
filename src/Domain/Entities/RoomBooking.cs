@@ -7,17 +7,19 @@ namespace DHAFacilitationAPIs.Domain.Entities;
 
 public class RoomBooking : BaseAuditableEntity
 {
-    [Required]
-    public Guid UserId { get; set; } = default!;
+    //[Required]
+    //public Guid UserId { get; set; } = default!;
 
-    [Required]
-    public Guid ClubId { get; set; }
+    //[Required]
+    //public Guid ClubId { get; set; }
 
-    [Required]
-    public Guid RoomId { get; set; }
+    //[Required]
+    //public Guid RoomId { get; set; }
 
     [Required]
     public Guid ReservationId { get; set; }
+    public Reservation Reservation { get; set; } = default!;
+
 
     [Required]
     public Guid Booking { get; set; }

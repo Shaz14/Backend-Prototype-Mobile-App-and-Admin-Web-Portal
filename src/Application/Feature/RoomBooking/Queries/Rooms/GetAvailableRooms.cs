@@ -28,10 +28,10 @@ public class GetAvailableRoomsQueryHandler : IRequestHandler<GetAvailableRoomsQu
             .Where(r => r.ClubId == request.ClubId &&
                         r.RoomCategoryId == request.RoomCategoryId &&
                         r.ResidenceTypeId == request.ResidenceTypeId &&
-                        !_context.RoomBookings.Any(rb =>
+                        !_context.RoomAvailabilities.Any(rb =>
                             rb.RoomId == r.Id &&
-                            rb.CheckInDate < request.CheckOutDate &&
-                            rb.CheckOutDate > request.CheckInDate))
+                            rb.FromDate < request.CheckOutDate &&
+                            rb.ToDate > request.CheckInDate))
             .Select(r => new AvailableRoomDto
             {
                 RoomId = r.Id,

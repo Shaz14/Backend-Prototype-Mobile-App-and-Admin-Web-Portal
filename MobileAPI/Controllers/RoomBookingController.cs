@@ -86,10 +86,10 @@ public class RoomBookingController : ControllerBase
     }
 
     [HttpPost("create-reservation"), AllowAnonymous]
-    public async Task<ActionResult<Guid>> CreateReservation([FromBody] CreateReservationDto dto)
+    public async Task<ActionResult<CreateReservationResponseDto>> CreateReservation([FromBody] CreateReservationDto dto)
     {
-        var reservationId = await _mediator.Send(new CreateReservationCommand(dto));
-        return Ok(reservationId);
+        var result = await _mediator.Send(new CreateReservationCommand(dto));
+        return Ok(result);
     }
 
     [HttpGet("get-all-reservations/{userId}"), AllowAnonymous]

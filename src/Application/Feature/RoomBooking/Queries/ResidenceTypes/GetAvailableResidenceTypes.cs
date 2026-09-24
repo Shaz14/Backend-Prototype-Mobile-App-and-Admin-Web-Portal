@@ -21,8 +21,8 @@ public class GetAvailableResidenceTypesQueryHandler
     public async Task<List<AvailableResidenceTypeDto>> Handle(GetAvailableResidenceTypesQuery request, CancellationToken cancellationToken)
     {
         // Find rooms already booked in given date range
-        var bookedRoomIds = await _context.RoomBookings
-            .Where(b => request.CheckIn < b.CheckOutDate && request.CheckOut > b.CheckInDate)
+        var bookedRoomIds = await _context.RoomAvailabilities
+            .Where(b => request.CheckIn < b.FromDate && request.CheckOut > b.ToDate)
             .Select(b => b.RoomId)
             .ToListAsync(cancellationToken);
 

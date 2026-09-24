@@ -20,13 +20,13 @@ public class GetAvailableRoomCategoriesQueryHandler : IRequestHandler<GetAvailab
 
     public async Task<List<AvailableRoomCategoryDto>> Handle(GetAvailableRoomCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var bookedRoomIds = await _context.RoomBookings
+        var bookedRoomIds = await _context.RoomAvailabilities
             .Where(rb =>
                 rb.IsActive == true &&
                 !rb.IsDeleted == false &&
                 // Overlap logic: (start < checkout) AND (end > checkin)
-                rb.CheckInDate < request.CheckOutDate &&
-                rb.CheckOutDate > request.CheckInDate)
+                rb.FromDate < request.CheckOutDate &&
+                rb.ToDate > request.CheckInDate)
             .Select(rb => rb.RoomId)
             .ToListAsync(cancellationToken);
 

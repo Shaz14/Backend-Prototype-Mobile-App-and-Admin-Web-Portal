@@ -12,7 +12,7 @@ public class PaymentIntent : BaseAuditableEntity
 
     [Required, Column(TypeName = "decimal(18,2)")]
     public decimal AmountToCollect { get; set; }          // deposit or full
-
+    public string? OneBillID { get; set; }
     public bool IsDeposit { get; set; } = true;
     public PaymentIntentStatus Status { get; set; } = PaymentIntentStatus.RequiresPayment;
 

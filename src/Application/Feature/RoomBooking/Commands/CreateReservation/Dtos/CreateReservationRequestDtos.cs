@@ -1,5 +1,4 @@
-﻿// Imports for DTO file
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DHAFacilitationAPIs.Application.Feature.RoomBooking.Commands.CreateReservation;

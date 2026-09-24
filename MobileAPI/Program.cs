@@ -26,6 +26,7 @@ builder.Services.AddMobileAPIServices(builder.Configuration);
 
 builder.Services.AddSingleton<DapperConnectionFactory>();
 builder.Services.AddHttpClient<ISmsService, SmsService>();
+builder.Services.AddHttpClient<ISmartPayService, SmartPayService>();
 builder.Services.AddScoped<IFileStorageService, FileStorageService>();
 
 builder.Services.AddAuthorization(options =>
